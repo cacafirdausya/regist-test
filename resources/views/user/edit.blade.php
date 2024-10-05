@@ -67,7 +67,7 @@
 
                             <div class="row mb-3">
                                 <div class="col-md-3">
-                                    <label class="labels">Current Password</label>
+                                    <label class="labels">Current Password (Optional)</label>
                                 </div>
                                 <div class="col-md-9">
                                     <div class="input-group">
@@ -88,7 +88,7 @@
 
                             <div class="row mb-3">
                                 <div class="col-md-3">
-                                    <label class="labels">New Password</label>
+                                    <label class="labels">New Password (Optional)</label>
                                 </div>
                                 <div class="col-md-9">
                                     <div class="input-group">

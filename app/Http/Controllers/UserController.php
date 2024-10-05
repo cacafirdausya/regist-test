@@ -62,13 +62,13 @@ class UserController extends Controller
         try {
             $validatedData = $request->validate([
                 'email' => 'required|email|unique:users,email',
-                'username' => 'required|unique:users,username',
+                'username' => 'required|unique:users,username|max:128',
                 'name' => 'required|string',
                 'password' => [
                     'required',
                     'string',
-                    'min:8',
-                    'max:54',
+                    'min:5',
+                    'max:8',
                     'regex:/[a-z]/',
                     'regex:/[A-Z]/',
                     'regex:/[0-9]/',

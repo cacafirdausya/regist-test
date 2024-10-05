@@ -33,7 +33,7 @@
                 </div>
             </a>
         </div>
-        
+
         <div class="card o-hidden border-0 shadow-lg my-5">
             <div class="card-body p-0">
                 <!-- Nested Row within Card Body -->
@@ -48,7 +48,7 @@
                                 <div class="form-group">
                                     <input name="username" type="text"
                                         class="form-control uppercase form-control-user @error('username')is-invalid @enderror"
-                                        id="username" placeholder="Username" required>
+                                        id="username" placeholder="Username" value="{{ old('username') }}" required>
                                     @error('username')
                                         <span class="invalid-feedback">{{ $message }}</span>
                                     @enderror
@@ -56,7 +56,7 @@
                                 <div class="form-group">
                                     <input name="name" type="text"
                                         class="form-control uppercase form-control-user @error('name')is-invalid @enderror"
-                                        id="exampleInputName" placeholder="Name" required>
+                                        id="exampleInputName" placeholder="Name" value="{{ old('name') }}" required>
                                     @error('name')
                                         <span class="invalid-feedback">{{ $message }}</span>
                                     @enderror
@@ -64,7 +64,8 @@
                                 <div class="form-group">
                                     <input name="email" type="email"
                                         class="form-control uppercase form-control-user @error('email')is-invalid @enderror"
-                                        id="exampleInputEmail" placeholder="Email Address" required>
+                                        id="exampleInputEmail" placeholder="Email Address" value="{{ old('email') }}"
+                                        required>
                                     @error('email')
                                         <span class="invalid-feedback">{{ $message }}</span>
                                     @enderror
@@ -92,7 +93,8 @@
                             </form>
                             <hr>
                             <div class="text-center">
-                                <a class="small text-gray-800" href="{{ route('login') }}">Already have an account? Login!</a>
+                                <a class="small text-gray-800" href="{{ route('login') }}">Already have an account?
+                                    Login!</a>
                             </div>
                         </div>
                     </div>

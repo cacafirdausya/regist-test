@@ -30,12 +30,12 @@ class AuthController extends Controller
         $validatedData = $request->validate([
             'email' => 'required|email|unique:users,email',
             'username' => 'required|unique:users,username',
-            'name' => 'required|string',
+            'name' => 'required|string|max:128',
             'password' => [
                 'required',
                 'string',
-                'min:8',
-                'max:54',
+                'min:5',
+                'max:8',
                 'regex:/[a-z]/',
                 'regex:/[A-Z]/',
                 'regex:/[0-9]/',
@@ -55,7 +55,7 @@ class AuthController extends Controller
         ];
         $this->db->createData($tableName, $userData);
 
-        return redirect()->route('login');
+        return redirect()->route('login')->withInput()->with('swal_success', 'REGIST SUCCESS');
     }
 
     public function login()

@@ -115,7 +115,8 @@
                                     </form>
                                     <hr>
                                     <div class="text-center">
-                                        <a class="small text-gray-800" href="{{ route('register') }}">Create an Account!</a>
+                                        <a class="small text-gray-800" href="{{ route('register') }}">Create an
+                                            Account!</a>
                                     </div>
                                 </div>
                             </div>
@@ -164,6 +165,17 @@
             });
         });
     </script>
+    @if (session('swal_success'))
+        <script>
+            Swal.fire({
+                icon: 'success',
+                title: 'Success!',
+                text: "{{ session('swal_success') }}",
+                showConfirmButton: true,
+                timer: 3000
+            });
+        </script>
+    @endif
     @if (session('swal_error'))
         <script>
             Swal.fire({
