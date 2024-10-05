@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Rules\ReCaptcha;
+use App\Services\DbService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -13,6 +14,12 @@ use Illuminate\Validation\ValidationException;
 
 class AuthController extends Controller
 {
+    protected $db;
+    public function __construct(DbService $db)
+    {
+        $this->db = $db;
+    }
+
     public function register()
     {
         return view('auth/register');
@@ -20,7 +27,34 @@ class AuthController extends Controller
 
     public function registerSave(Request $request)
     {
-        User::createData($request);
+        $validatedData = $request->validate([
+            'email' => 'required|email|unique:users,email',
+            'username' => 'required|unique:users,username',
+            'name' => 'required|string',
+            'password' => [
+                'required',
+                'string',
+                'min:8',
+                'max:54',
+                'regex:/[a-z]/',
+                'regex:/[A-Z]/',
+                'regex:/[0-9]/',
+            ],
+        ], [
+            'password.required' => 'Password is required.',
+            'password.min' => 'Password must be at least 8 characters long.',
+            'password.regex' => 'Password must contain uppercase letters, lowercase letters, and numbers.',
+        ]);
+
+        $tableName = 'users';
+        $userData = [
+            'username' => strtoupper($validatedData['username']),
+            'name' => strtoupper($validatedData['name']),
+            'email' => strtoupper($validatedData['email']),
+            'password' => Hash::make($validatedData['password']),
+        ];
+        $this->db->createData($tableName, $userData);
+
         return redirect()->route('login');
     }
 

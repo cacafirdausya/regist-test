@@ -12,28 +12,21 @@
     <!-- Divider -->
     <hr class="sidebar-divider my-0">
 
-    <li class="nav-item">
-        <a class="nav-link" onclick="underDevelopment()" href="#">
-            <i class="fas fa-fw fa-tachometer-alt"></i>
-            <span>Dashboard</span>
-        </a>
-    </li>
-
     <li class="nav-item {{ request()->routeIs('fibonacci.*') ? 'active' : '' }}">
         <a class="nav-link" href="{{ route('fibonacci.index') }}">
-            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <i class="fas ri-hashtag"></i>
             <span>Fibonacci</span></a>
     </li>
-   
+
     <li class="nav-item {{ request()->routeIs('users.*') ? 'active' : '' }}">
         <a class="nav-link" href="{{ route('users.index') }}">
-            <i class="fas fa-fw fa-tachometer-alt"></i>
-            <span>User</span></a>
+            <i class="fas ri-group-line"></i>
+            <span>User Settings</span></a>
     </li>
 
-    <li class="nav-item">
+    <li class="nav-item {{ request()->routeIs('profile') ? 'active' : '' }}">
         <a class="nav-link" href="{{ route('profile') }}">
-            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <i class="fas ri-user-line"></i>
             <span>Profile</span></a>
     </li>
 
