@@ -77,6 +77,11 @@
                                             <i class="ri-eye-fill" id="passwordIcon"></i>
                                         </button>
                                     </div>
+                                    <div>
+                                        <span class="text-small text-gray-500">Min. 5 Characters | Max. 8 Characters | Min.
+                                            1
+                                            Uppercase & 1 Symbol</span>
+                                    </div>
                                     @if ($errors->has('password'))
                                         <span class="text-danger">
                                             {{ $errors->first('password') }}

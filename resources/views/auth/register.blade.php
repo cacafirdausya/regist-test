@@ -75,7 +75,7 @@
                                         <input name="password" type="password"
                                             class="form-control form-control-user @error('password')is-invalid @enderror"
                                             id="exampleInputPassword"
-                                            placeholder="PASSWORD (Min. 5 Characters | Max. 8 Characters | 1 Uppercase & 1 Symbol)"
+                                            placeholder="PASSWORD (Min. 5 Characters | Max. 8 Characters | Min. 1 Uppercase & 1 Symbol)"
                                             required>
 
                                         @error('password')
