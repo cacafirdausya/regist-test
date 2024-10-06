@@ -62,7 +62,7 @@ class UserController extends Controller
         try {
             $validatedData = $request->validate([
                 'email' => 'required|email|unique:users,email',
-                'username' => 'required|unique:users,username|max:128',
+                'username' => 'required|unique:users,username|regex:/^\S*$/',
                 'name' => 'required|string',
                 'password' => [
                     'required',
@@ -115,7 +115,7 @@ class UserController extends Controller
 
             $validatedData = $request->validate([
                 'email' => 'required|email|unique:users,email,' . $id,
-                'username' => 'required|unique:users,username,' . $id,
+                'username' => 'required|regex:/^\S*$/|unique:users,username,' . $id,
                 'name' => 'required|string',
                 'current_password' => [
                     'nullable',

@@ -8,6 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <title>APP TEST</title>
+
     <!-- Custom fonts for this template-->
     <link href="{{ asset('static/vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
     <link
@@ -94,6 +95,8 @@
     <a class="scroll-to-top rounded" href="#page-top">
         <i class="fas fa-angle-up"></i>
     </a>
+    <script src="https://cdn.example.com/path/to/flasher.min.js"></script>
+
 
     <!-- Bootstrap core JavaScript-->
     <script src="{{ asset('static/vendor/jquery/jquery.min.js') }}"></script>

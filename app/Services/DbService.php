@@ -23,6 +23,13 @@ class DbService
         return $this->connection->table($tableName)->where('id', $id)->first();
     }
 
+    public function getByEmailUsername($tableName, $item)
+    {
+        return $this->connection->table($tableName)->where('email', $item)
+            ->orWhere('username', $item)
+            ->first();
+    }
+
     public function createData($tableName, $data)
     {
         return $this->connection->table($tableName)->insert($data);

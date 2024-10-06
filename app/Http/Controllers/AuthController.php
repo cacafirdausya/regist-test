@@ -29,7 +29,7 @@ class AuthController extends Controller
     {
         $validatedData = $request->validate([
             'email' => 'required|email|unique:users,email',
-            'username' => 'required|unique:users,username',
+            'username' => 'required|unique:users,username|regex:/^\S*$/',
             'name' => 'required|string|max:128',
             'password' => [
                 'required',
@@ -74,9 +74,8 @@ class AuthController extends Controller
             'captcha.captcha' => 'Captcha yang Anda masukkan salah. Silakan coba lagi.'
         ])->validate();
 
-        $user = User::where('email', $request->name)
-            ->orWhere('username', $request->name)
-            ->first();
+        $tableName = 'users';
+        $user = $this->db->getByEmailUsername($tableName, $request->name);
 
         if ($user && Auth::attempt(['email' => $user->email, 'password' => $request->password], $request->boolean('remember'))) {
             $request->session()->regenerate();
