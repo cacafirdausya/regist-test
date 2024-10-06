@@ -14,33 +14,33 @@
             </div>
             <div class="card-body">
                 <form id="fibonacciForm">
-                <div class="row mb-3">
-                    <div class="col-md-3">
-                        <label class="labels">Rows</label>
+                    <div class="row mb-3">
+                        <div class="col-md-3">
+                            <label class="labels">Rows</label>
+                        </div>
+                        <div class="col-md-9">
+                            <input type="number" name="row" id="row" class="form-control" required>
+                        </div>
                     </div>
-                    <div class="col-md-9">
-                        <input type="number" name="row" id="row" class="form-control" required>
+
+                    <div class="row mb-3">
+                        <div class="col-md-3">
+                            <label class="labels">Columns</label>
+                        </div>
+                        <div class="col-md-9">
+                            <input type="number" name="column" id="column" class="form-control" required>
+                        </div>
                     </div>
-                </div>
 
-                <div class="row mb-3">
-                    <div class="col-md-3">
-                        <label class="labels">Columns</label>
+
+                    <div class="mt-5 text-right">
+                        <button id="btn" class="btn btn-primary" type="submit">
+                            Submit</button>
                     </div>
-                    <div class="col-md-9">
-                        <input type="number" name="column" id="column" class="form-control" required>
-                    </div>
-                </div>
 
 
-                <div class="mt-5 text-right">
-                    <button id="btn" class="btn btn-primary" type="submit">
-                        Submit</button>
-                </div>
-
-
-                <h5>OUTPUT: </h5>
-                <div class="table-responsive" id="table-output"></div>
+                    <h5>OUTPUT: </h5>
+                    <div class="table-responsive" id="table-output"></div>
                 </form>
             </div>
         </div>
@@ -48,7 +48,6 @@
 @endsection
 
 @push('js')
-
     <script>
         document.getElementById('fibonacciForm').addEventListener('submit', function(event) {
             event.preventDefault();
@@ -59,19 +58,17 @@
             document.getElementById('table-output').innerHTML = '';
 
             axios.get('/api/getFibonacci', {
-                params: {
-                    rowCount: rowCount,
-                    columnCount: columnCount
-                }
-            })
-                .then(function (response) {
-                    // Append the returned table to the div
+                    params: {
+                        rowCount: rowCount,
+                        columnCount: columnCount
+                    }
+                })
+                .then(function(response) {
                     document.getElementById('table-output').innerHTML = response.data.table;
                 })
-                .catch(function (error) {
+                .catch(function(error) {
                     console.error(error);
                 });
         });
     </script>
 @endpush
-
