@@ -13,6 +13,7 @@
     <link
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css">
 
     <!-- Custom styles for this template-->
     <link href="{{ asset('static/css/sb-admin-2.min.css') }}" rel="stylesheet">
@@ -24,6 +25,7 @@
 </head>
 
 <body class="bg-white">
+
     <div class="container">
 
         <div class="row align-items-center justify-content-center mt-5">
@@ -72,12 +74,16 @@
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-sm-12 mb-3 mb-sm-0">
-                                        <input name="password" type="password"
-                                            class="form-control form-control-user @error('password')is-invalid @enderror"
-                                            id="exampleInputPassword"
-                                            placeholder="PASSWORD (Min. 5 Characters | Max. 8 Characters | Min. 1 Uppercase & 1 Symbol)"
-                                            required>
-
+                                        <div class="input-group">
+                                            <input name="password" type="password"
+                                                class="form-control form-control-user @error('password')is-invalid @enderror"
+                                                id="password"
+                                                placeholder="PASSWORD (Min. 5 Characters | Max. 8 Characters | Min. 1 Uppercase & 1 Symbol)"
+                                                required>
+                                            <button type="button" id="togglePassword" class="btn">
+                                                <i class="ri-eye-fill" id="passwordIcon"></i>
+                                            </button>
+                                        </div>
                                         @error('password')
                                             <span class="invalid-feedback">{{ $message }}</span>
                                         @enderror
@@ -114,6 +120,27 @@
 
     <!-- Custom scripts for all pages-->
     <script src="{{ asset('static/js/sb-admin-2.min.js') }}"></script>
+
+    <script>
+        const togglePassword = document.querySelector('#togglePassword');
+        const password = document.querySelector('#password');
+        const passwordIcon = document.querySelector('#passwordIcon');
+
+        togglePassword.addEventListener('click', function(e) {
+            const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+            password.setAttribute('type', type);
+
+            if (type === 'password') {
+                passwordIcon.classList.remove('ri-eye-fill');
+                passwordIcon.classList.add('ri-eye-off-fill');
+            } else {
+                passwordIcon.classList.remove('ri-eye-off-fill');
+                passwordIcon.classList.add('ri-eye-fill');
+            }
+        });
+    </script>
+
 </body>
 
 </html>
+<script src="https://cdn.jsdelivr.net/npm/@flasher/flasher@latest/dist/flasher.min.js"></script>
