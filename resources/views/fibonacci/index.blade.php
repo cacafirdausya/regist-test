@@ -47,6 +47,8 @@
     </div>
 @endsection
 
+
+<script src="https://cdn.jsdelivr.net/npm/@flasher/flasher@latest/dist/flasher.min.js"></script>
 @push('js')
     <script>
         document.getElementById('fibonacciForm').addEventListener('submit', function(event) {

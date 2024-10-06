@@ -95,7 +95,6 @@
     <a class="scroll-to-top rounded" href="#page-top">
         <i class="fas fa-angle-up"></i>
     </a>
-    <script src="https://cdn.example.com/path/to/flasher.min.js"></script>
 
 
     <!-- Bootstrap core JavaScript-->

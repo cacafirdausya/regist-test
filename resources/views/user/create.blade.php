@@ -26,7 +26,7 @@
                                 </div>
                                 <div class="col-md-9">
                                     <input type="text" name="username" id="username" class="form-control uppercase"
-                                           value="{{ old('username') }}" required>
+                                        value="{{ old('username') }}" required>
                                     @if ($errors->has('username'))
                                         <span class="text-danger">
                                             {{ $errors->first('username') }}
@@ -104,7 +104,7 @@
 @endsection
 
 
-
+<script src="https://cdn.jsdelivr.net/npm/@flasher/flasher@latest/dist/flasher.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 @push('js')
     <script type="text/javascript">
